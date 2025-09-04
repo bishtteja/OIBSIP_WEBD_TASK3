@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌸 Pookie Temperature Converter 🌸</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffd6e0, #e7c6ff, #caffbf, #b5f2e5);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      height: 100vh;
+      margin: 0;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h2 {
+      color: #ff69b4;
+      margin-bottom: 20px;
+    }
+
+    input, select, button {
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 2px solid #ffb6c1;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input, select {
+      background: #fff0f6;
+    }
+
+    button {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #6a0572;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🌸 Pookie Temperature Converter 🌸</h2>
+    
+    <input type="number" id="tempInput" placeholder="Enter temperature">
+    
+    <br>
+    <label for="unit">Choose unit:</label>
+    <select id="unit">
+      <option value="C">Celsius (°C)</option>
+      <option value="F">Fahrenheit (°F)</option>
+    </select>
+    
+    <br>
+    <button onclick="convertTemp()">Convert</button>
+    
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function convertTemp() {
+      let temp = document.getElementById("tempInput").value;
+      let unit = document.getElementById("unit").value;
+      let resultArea = document.getElementById("result");
+
+      if (temp === "") {
+        resultArea.innerHTML = "⚠️ Oopsie! Please enter a valid number 🐻💕";
+        resultArea.style.color = "red";
+        return;
+      }
+
+      temp = parseFloat(temp);
+      let converted;
+
+      if (unit === "C") {
+        converted = (temp * 9/5) + 32;
+        resultArea.innerHTML = `💖 ${temp} °C = ${converted.toFixed(2)} °F 💖`;
+      } else {
+        converted = (temp - 32) * 5/9;
+        resultArea.innerHTML = `💖 ${temp} °F = ${converted.toFixed(2)} °C 💖`;
+      }
+
+      resultArea.style.color = "#6a0572";
+    }
+  </script>
+</body>
+</html>
